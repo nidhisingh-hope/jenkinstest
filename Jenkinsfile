@@ -31,7 +31,7 @@ pipeline {
 			    //withSonarQubeEnv('SonarQube Server') {
 			    	//sh '/var/lib/jenkins/sonar-scanner-4.2.0.1873-linux/bin/sonar-scanner'
 			    //}
-		    withSonarQubeEnv(installationName: 'My SonarQube Server') { 
+		    withSonarQubeEnv('SonarQube Server') { 
 			    // You can override the credential to be used
       sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.6.0.1398:sonar'
     }
