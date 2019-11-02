@@ -28,9 +28,12 @@ pipeline {
             steps {
                 echo 'Sonar Scanner'
                	//def scannerHome = tool 'SonarQube Scanner 3.0'
-			    withSonarQubeEnv('SonarQube Server') {
-			    	sh '/var/lib/jenkins/sonar-scanner-4.2.0.1873-linux/bin/sonar-scanner'
-			    }
+			    //withSonarQubeEnv('SonarQube Server') {
+			    	//sh '/var/lib/jenkins/sonar-scanner-4.2.0.1873-linux/bin/sonar-scanner'
+			    //}
+		    withSonarQubeEnv(credentialsId: '62f9ea724b1283e33009a44cac9cddd5e88ff56d', installationName: 'My SonarQube Server') { // You can override the credential to be used
+      sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.6.0.1398:sonar'
+    }
             }
         }
         stage('Package') {
